@@ -29,6 +29,12 @@ int main(){
     std::cout << "Example of scalar multiply \n";
     std::cout << v * 3.0f << std::endl;
     std::cout << 2.0f * v << std::endl;
+	// dot product
+	std::cout << "Example of dot product \n";
+	std::cout << v.dot(w) << std::endl;
+	// cross product
+	std::cout << "Example of cross product \n";
+	std::cout << v.cross(w) << std::endl;
 
     // Example of matrix
     std::cout << "Example of matrix \n";
@@ -40,9 +46,52 @@ int main(){
     std::cout << "Example of output \n";
     std::cout << i << std::endl;
     // matrix add i + j
+	std::cout << i + j << std::endl;
     // matrix scalar multiply i * 2.0
+	std::cout << i * 2.0f << std::endl;
     // matrix multiply i * j
+	std::cout << i * j << std::endl;
     // matrix multiply vector i * v
+	std::cout << i * v << std::endl;
+
+	// rotation matrix
+	Eigen::Matrix3f rotation;
+	rotation(0, 0) = std::cosf(45.0f/180.0f*acosf(-1));
+	rotation(1, 0) = std::sinf(45.0f/180.0f*acosf(-1));
+	rotation(2, 0) = 0.0f;
+	rotation(0, 1) = -std::sinf(45.0f/180.0f*acosf(-1));
+	rotation(1, 1) = std::cosf(45.0f/180.0f*acosf(-1));
+	rotation(2, 1) = 0.0f;
+	rotation(0, 2) = 0.0f;
+	rotation(1, 2) = 0.0f;
+	rotation(2, 2) = 1.0f;
+
+	std::cout << "Rotation matrix \n";
+	std::cout << rotation << std::endl;
+
+	// translation matrix
+	Eigen::Matrix3f translation;
+	translation(0, 0) = 1.0f;
+	translation(1, 0) = 0.0f;
+	translation(2, 0) = 0.0f;
+	translation(0, 1) = 0.0f;
+	translation(1, 1) = 1.0f;
+	translation(2, 1) = 0.0f;
+	translation(0, 2) = 1.0f;
+	translation(1, 2) = 2.0f;
+	translation(2, 2) = 1.0f;
+
+	std::cout << "Translation matrix \n";
+	std::cout << translation << std::endl;
+
+	// point to be moved
+	Eigen::Vector3f point(2.0f, 1.0f, 1.0f);
+	std::cout << "Point to be moved \n";
+	std::cout << point << std::endl;
+
+	// moved point
+	std::cout << "Moved point \n";
+	std::cout << translation * rotation * point << std::endl;
 
     return 0;
 }
