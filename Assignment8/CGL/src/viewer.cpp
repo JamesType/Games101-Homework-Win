@@ -208,7 +208,7 @@ void Viewer::drawInfo() {
   }
 
   // render OSD
-  //TODO 由于字体无法解析，就不渲染文本了
+  //TODO 鐢变簬瀛椾綋鏃犳硶瑙ｆ瀽锛屽氨涓嶆覆鏌撴枃鏈簡
   osd_text->render();
 
 }
